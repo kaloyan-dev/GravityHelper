@@ -60,4 +60,18 @@ class GravityHelper {
 		return GFFormsModel::get_leads( $this->form_id );
 	}
 
+	public function get_fields() {
+		if ( ! class_exists( 'GFFormsModel' ) ) {
+			_e( 'Gravity Forms not active.', 'gh' );
+			return;
+		}
+
+		if ( ! $this->form_id ) {
+			_e( 'No form ID specified.', 'gh' );
+			return;
+		}
+
+		return GFFormsModel::get_form_meta( $this->form_id );
+	}
+
 }
