@@ -74,4 +74,43 @@ class GravityHelper {
 		return GFFormsModel::get_form_meta( $this->form_id );
 	}
 
+	public function get_entries_data() {
+		if ( ! class_exists( 'GFFormsModel' ) ) {
+			_e( 'Gravity Forms not active.', 'gh' );
+			return;
+		}
+
+		if ( ! $this->form_id ) {
+			_e( 'No form ID specified.', 'gh' );
+			return;
+		}
+
+		$data    = array();
+		$entries = $this->get_entries();
+		$fields  = $this->get_fields();
+
+		if ( ! $entries || empty( $fields['fields'] ) ) {
+			_e( 'No entries found.' , 'gh' );
+			return $data;
+		}
+
+		$field_data = array();
+
+		foreach ( $fields['fields'] as $field ) {
+			$field_data[$field->id] = $field->label;
+		}
+
+		foreach ( $entries as $entry ) {
+			$entry_data = array();
+
+			foreach ( $field_data as $id => $label ) {
+				$entry_data[$label] = $entry[$id];
+			}
+
+			$data[] = $entry_data;
+		}
+
+		return array_reverse( $data );
+	}
+
 }
