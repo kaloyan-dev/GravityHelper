@@ -16,6 +16,22 @@ class GravityHelper {
 		}
 	}
 
+	public function should_return( $form_id_required = true ) {
+		$should_return = false;
+
+		if ( ! class_exists( 'GFFormsModel' ) ) {
+			_e( 'Gravity Forms not active.', 'gh' );
+			$should_return = true;
+		}
+
+		if ( $form_id_required && ! $this->form_id ) {
+			_e( 'No form ID specified.', 'gh' );
+			$should_return = true;
+		}
+
+		return $should_return;
+	}
+
 	public function button_submits() {
 		add_filter( "gform_submit_button{$this->filter_affix}", array( $this, 'form_submit_button' ), 10, 2 );
 
@@ -47,43 +63,19 @@ class GravityHelper {
 	}
 
 	public function get_entries() {
-		if ( ! class_exists( 'GFFormsModel' ) ) {
-			_e( 'Gravity Forms not active.', 'gh' );
-			return;
-		}
-
-		if ( ! $this->form_id ) {
-			_e( 'No form ID specified.', 'gh' );
-			return;
-		}
+		if ( $this->should_return() ) return;
 
 		return GFFormsModel::get_leads( $this->form_id );
 	}
 
 	public function get_fields() {
-		if ( ! class_exists( 'GFFormsModel' ) ) {
-			_e( 'Gravity Forms not active.', 'gh' );
-			return;
-		}
-
-		if ( ! $this->form_id ) {
-			_e( 'No form ID specified.', 'gh' );
-			return;
-		}
+		if ( $this->should_return() ) return;
 
 		return GFFormsModel::get_form_meta( $this->form_id );
 	}
 
 	public function get_entries_data() {
-		if ( ! class_exists( 'GFFormsModel' ) ) {
-			_e( 'Gravity Forms not active.', 'gh' );
-			return;
-		}
-
-		if ( ! $this->form_id ) {
-			_e( 'No form ID specified.', 'gh' );
-			return;
-		}
+		if ( $this->should_return() ) return;
 
 		$data    = array();
 		$entries = $this->get_entries();
