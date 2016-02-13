@@ -4,10 +4,17 @@ namespace GravityHelper;
 
 class GravityHelper {
 
-	private $options;
+	private $form_id = '';
+	private $options = array();
+
+	function __construct( $id = false ) {
+		if ( $id ) {
+			$this->form_id = "_{$id}";
+		}
+	}
 
 	public function button_submits() {
-		add_filter( 'gform_submit_button', array( $this, 'form_submit_button' ), 10, 2 );
+		add_filter( "gform_submit_button{$this->form_id}", array( $this, 'form_submit_button' ), 10, 2 );
 
 		return $this;
 	}
