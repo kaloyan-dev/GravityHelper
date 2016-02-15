@@ -1,6 +1,7 @@
 <?php
 
 namespace GravityHelper;
+
 use GFFormsModel;
 
 class GravityHelper {
