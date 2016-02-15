@@ -13,7 +13,8 @@ class Elements extends GravityHelper {
 
 	public function form_submit_button( $button, $form ) {
 		$attributes = apply_filters( 'gh_button_atts', '' );
-		return "<button {$attributes} id='gform_submit_button_{$form['id']}'>{$form['button']['text']}</button>";
+		$content    = apply_filters( 'gh_button_content', $form['button']['text'] );
+		return "<button {$attributes} id='gform_submit_button_{$form['id']}'>{$content}</button>";
 	}
 
 	public function button_atts( $attributes ) {
@@ -33,6 +34,17 @@ class Elements extends GravityHelper {
 		}
 
 		return implode( '', $attributes_html );
+	}
+
+	public function button_content( $content ) {
+		$this->options['button_content'] = $content;
+		add_filter( 'gh_button_content', array( $this, 'apply_button_content' ) );
+	}
+
+	public function apply_button_content( $current_content ) {
+		$content = str_replace( '{content}', $current_content, $this->options['button_content'] );
+
+		return $content;
 	}
 
 }
