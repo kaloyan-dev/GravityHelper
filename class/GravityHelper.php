@@ -32,9 +32,9 @@ class GravityHelper {
 		return $should_return;
 	}
 
-	public function button_submits() {
+	public function button_submit() {
 		$Elements = new Elements();
-		$Elements->button_submits();
+		$Elements->button_submit();
 
 		return $Elements;
 	}

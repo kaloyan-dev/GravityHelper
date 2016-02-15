@@ -5,7 +5,7 @@ use GFFormsModel;
 
 class Elements extends GravityHelper {
 
-	public function button_submits() {
+	public function button_submit() {
 		add_filter( "gform_submit_button{$this->filter_affix}", array( $this, 'form_submit_button' ), 10, 2 );
 
 		return $this;
