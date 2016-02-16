@@ -34,7 +34,7 @@ class GravityHelper {
 	}
 
 	public function button_submit() {
-		$Elements = new Elements();
+		$Elements = new Elements( $this->form_id );
 		$Elements->button_submit();
 
 		return $Elements;
