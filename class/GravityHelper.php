@@ -33,6 +33,13 @@ class GravityHelper {
 		return $should_return;
 	}
 
+	public function ajax_spinner( $spinner_url ) {
+		$Elements = new Elements( $this->form_id );
+		$Elements->ajax_spinner( $spinner_url );
+
+		return $Elements;
+	}
+
 	public function button_submit() {
 		$Elements = new Elements( $this->form_id );
 		$Elements->button_submit();

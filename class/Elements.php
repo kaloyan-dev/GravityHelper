@@ -6,6 +6,15 @@ use GFFormsModel;
 
 class Elements extends GravityHelper {
 
+	public function ajax_spinner( $spiner_url ) {
+		$this->options['ajax_spinner_url'] = $spiner_url;
+		add_filter( "gform_ajax_spinner_url{$this->filter_affix}", array( $this, 'apply_ajax_spinner_url' ) );
+	}
+
+	public function apply_ajax_spinner_url() {
+		return $this->options['ajax_spinner_url'];
+	}
+
 	public function button_submit() {
 		add_filter( "gform_submit_button{$this->filter_affix}", array( $this, 'form_submit_button' ), 10, 2 );
 
