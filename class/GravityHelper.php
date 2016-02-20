@@ -11,10 +11,7 @@ class GravityHelper {
 	protected $options      = array();
 
 	function __construct( $id = false ) {
-		if ( $id ) {
-			$this->form_id      = $id;
-			$this->filter_affix = "_{$id}";
-		}
+		$this->switch_to_form( $id );
 	}
 
 	public function should_return( $form_id = false, $form_id_required = true ) {
@@ -31,6 +28,24 @@ class GravityHelper {
 		}
 
 		return $should_return;
+	}
+
+	public function switch_to_form( $form_id = false ) {
+		$this->form_id      = false;
+		$this->filter_affix = '';
+
+		if ( $form_id ) {
+			$this->form_id      = $form_id;
+			$this->filter_affix = "_{$form_id}";
+		}
+
+		return $this;
+	}
+
+	public function reset_form() {
+		$this->switch_to_form( false );
+
+		return $this;
 	}
 
 	public function ajax_spinner( $spinner_url ) {
