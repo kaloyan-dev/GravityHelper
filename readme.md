@@ -65,7 +65,7 @@ $GravityHelper->button_submit()->button_content( '<span>{content}</span>' );
 use GravityHelper\GravityHelper;
 
 $GravityHelper = new GravityHelper( 1 );
-$form_entries  = $GravityHepler->get_entries();
+$form_entries  = $GravityHelper->get_entries();
 ```
 
 `get_fields()` - gets the form fields. Equal to `GFFormsModel::get_form_meta()`, requires form ID.
@@ -74,7 +74,7 @@ $form_entries  = $GravityHepler->get_entries();
 use GravityHelper\GravityHelper;
 
 $GravityHelper = new GravityHelper( 1 );
-$form_fields   = $GravityHepler->get_fields();
+$form_fields   = $GravityHelper->get_fields();
 ```
 
 `get_entries_data()` - gets an associative array with the fields as keys and entries as value.
@@ -83,7 +83,7 @@ $form_fields   = $GravityHepler->get_fields();
 use GravityHelper\GravityHelper;
 
 $GravityHelper = new GravityHelper( 1 );
-$entries_data  = $GravityHepler->get_entries_data();
+$entries_data  = $GravityHelper->get_entries_data();
 ```
 
 `switch_to_form()` and `reset_form()` - switches or resets the current form to global. Useful for chaining.
