@@ -1,7 +1,5 @@
 ## Gravity Helper
 
-###### (still work in progress, more features coming soon)
-
 GravityHelper is a simple library that provides an easy way to do common tasks related to [Gravity Forms](http://www.gravityforms.com/).
 
 ##### Installation
