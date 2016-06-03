@@ -43,10 +43,10 @@ class Entries extends GravityHelper {
 				$entry_data[$label] = $entry[$id];
 			}
 
-			$data[] = $entry_data;
+			$data[$entry['id']] = $entry_data;
 		}
 
-		return array_reverse( $data );
+		return array_reverse( $data, true );
 	}
 
 }
