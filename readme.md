@@ -47,7 +47,7 @@ $GravityHelper->button_submit();
 use GravityHelper\GravityHelper;
 
 $GravityHelper = new GravityHelper();
-$GravityHelper->button_submit()->button_atts( 'class' => 'btn btn-primary' );
+$GravityHelper->button_submit()->button_atts( array( 'class' => 'btn btn-primary' ) );
 ```
 
 ---
